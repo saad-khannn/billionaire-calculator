@@ -14,19 +14,28 @@
 
 <body>
     <div class="container">
-        <div class="title">Billionaire Calculator</div>
+        <div id="title">Billionaire Calculator</div>
+
+        <form id="input-form">
             <div class="input-box">
                 <span class="details">Years</span>
-                <input type="number" placeholder="Enter total years worked" required>
+                <input type="number" id="years" placeholder="Enter total years worked" required>
             </div>
             <div class="input-box">
                 <span class="details">Rate</span>
-                <input type="number" placeholder="Enter hourly rate" required>
+                <input type="number" id="rate" placeholder="Enter hourly rate" required>
             </div>
-        <div class="button">
-            <input type="submit" value="Calculate" onclick="calculate()">
+        </form>
+        <div id="btn">
+            <input type="submit" value="Calculate" onclick="getInputs()">
         </div>
     </div>
+
+    <div class="container">
+        <div class="output-text">
+            <span id="information"></span>
+        </div>
+    </div> 
 
     <script src="main.js"></script>
 </body>
