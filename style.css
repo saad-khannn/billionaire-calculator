@@ -104,10 +104,11 @@ input[type=number] {
 /**************************************************/
 
 .output-text{
-    width: 80%;
+    width: 100%;
     text-align: left;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
+    text-align: center;
 }
 
 .output-text #user-wealth{
