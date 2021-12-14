@@ -1,6 +1,7 @@
-function calculate() {
+function getInputs() {
     yearsInput = document.getElementById("years").value;
     rateInput = document.getElementById("rate").value;
+    rateDollars = moneyToUsd(Number(rateInput));
     totalAmount = rateInput * 40 * 52.1429 * yearsInput;
     dollarAmount = moneyToUsd(totalAmount);
 
@@ -8,7 +9,7 @@ function calculate() {
 }
 
 function displayWealth() {
-    let wealthOutput = `After working for ${yearsInput} years at $${rateInput} an hour,
+    let wealthOutput = `After working for ${yearsInput} years at ${rateDollars} an hour,
                         with the standard 40-hour work week,
                         you would accumulate a wealth of ${dollarAmount}.
                         `;
@@ -49,7 +50,7 @@ function compareWealths(data) {
 }
 
 function showBillionaireInfo(){
-    let informationOutput = `You would still have less than wealth than ${billionaireInfo.billionaireName}
+    let informationOutput = `You would still have less wealth than ${billionaireInfo.billionaireName}
                             who has a net worth of ${billionaireInfo.billionaireWorth}.
                             `
     document.getElementById("billionaire-information").innerHTML = informationOutput;
@@ -64,7 +65,6 @@ function moneyToUsd(number) {
         {
             style: 'currency',
             currency: 'USD',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0
+            minimumFractionDigits: 0
         });
 }
