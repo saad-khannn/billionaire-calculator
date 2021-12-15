@@ -15,7 +15,7 @@ function getInputs() {
 
 function displayWealth() {
 
-    let wealthOutput = `After working for ${Intl.NumberFormat('en-US').format(yearsInput)} years 
+    let wealthOutput = `After working for ${formatNumber(yearsInput)} years 
                         at ${rateDollars} an hour, with the standard 40-hour work week,
                         you would accumulate a wealth of ${dollarAmount}.`;
     document.getElementById("user-wealth").innerHTML = wealthOutput;
@@ -38,13 +38,16 @@ function compareWealths(data) {
 
     var billionaireNames = [];
     var billionaireWorths = [];
+    var billionaireRanks = [];
     var billionaireName;
     var billionaireWorth;
+    var billionaireRank;
 
     for (let i = 0; i < data.length; i++) {
         netWorth = (data[i].finalWorth) * 1000000;
         billionaireNames.push(data[i].person.name);
         billionaireWorths.push(netWorth);
+        billionaireRanks.push(data[i].rank);
         if (data[i].finalWorth < 1000) {
             break;
         }
@@ -54,6 +57,7 @@ function compareWealths(data) {
         if (billionaireWorths[i] < totalAmount) {
             billionaireName = billionaireNames[i - 1];
             billionaireWorth = billionaireWorths[i - 1];
+            billionaireRank = billionaireRanks[i - 1];
             break;
         }
     }
@@ -64,6 +68,9 @@ function compareWealths(data) {
     if (billionaireWorth == undefined) { }
     else { billionaireInfo.billionaireWorth = toUsd(billionaireWorth); }
 
+    if (billionaireRank == undefined) { }
+    else { billionaireInfo.billionaireRank = billionaireRank; }
+
     if (totalAmount > billionaireWorths[0]) { billionaireInfo.billionaireName = "1"; }
 
 }
@@ -71,13 +78,24 @@ function compareWealths(data) {
 function showBillionaireInfo() {
 
     if (billionaireInfo.billionaireName !== "") {
-        if (billionaireInfo.billionaireName.includes("family")) {
-            var informationOutput = `You would still have less than ${billionaireInfo.billionaireName}
-                                    who have a combined net worth of ${billionaireInfo.billionaireWorth}.`
+        if (billionaireInfo.billionaireRank !== 1) {
+            if (billionaireInfo.billionaireName.includes("family")) {
+                var informationOutput = `You would still have less than ${billionaireInfo.billionaireName}
+                                    who have a combined net worth of ${billionaireInfo.billionaireWorth}.
+                                    There would still be ${formatNumber(billionaireInfo.billionaireRank)} 
+                                    billionaires richer than you.`
+            }
+            else {
+                var informationOutput = `You would still have less than ${billionaireInfo.billionaireName}
+                                    who has a net worth of ${billionaireInfo.billionaireWorth}.
+                                    There would still be ${formatNumber(billionaireInfo.billionaireRank)} 
+                                    billionaires richer than you.`
+            }
         }
         else {
             var informationOutput = `You would still have less than ${billionaireInfo.billionaireName}
-                                    who has a net worth of ${billionaireInfo.billionaireWorth}.`
+                                    who have a combined net worth of ${billionaireInfo.billionaireWorth}.
+                                    There would still be 1 billionaire richer than you.`
         }
     }
     else { var informationOutput = `You would still have less than every living billionaire.` }
@@ -110,5 +128,11 @@ function toUsd(number) {
             currency: 'USD',
             minimumFractionDigits: 0
         });
+
+}
+
+function formatNumber(number) {
+
+    return Intl.NumberFormat('en-US').format(number);
 
 }
