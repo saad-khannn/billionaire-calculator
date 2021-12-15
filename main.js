@@ -1,4 +1,5 @@
 function getInputs() {
+    
     document.getElementById("user-wealth").innerHTML = "";
     document.getElementById("billionaire-information").innerHTML = "";
 
@@ -12,6 +13,7 @@ function getInputs() {
 }
 
 function displayWealth() {
+    
     let wealthOutput = `After working for ${Intl.NumberFormat('en-US').format(yearsInput)} years 
                         at ${rateDollars} an hour, with the standard 40-hour work week,
                         you would accumulate a wealth of ${dollarAmount}.`;
@@ -21,6 +23,7 @@ function displayWealth() {
 }
 
 async function getBillionaires() {
+    
     const response = await fetch('https://forbes400.herokuapp.com/api/forbes400/getAllBillionaires');
     const data = await response.json();
     return data;
@@ -29,6 +32,7 @@ async function getBillionaires() {
 var billionaireInfo = {};
 
 function compareWealths(data) {
+    
     var billionaireNames = [];
     var billionaireWorths = [];
     var billionaireName;
@@ -38,6 +42,9 @@ function compareWealths(data) {
         netWorth = (data[i].finalWorth) * 1000000;
         billionaireNames.push(data[i].person.name);
         billionaireWorths.push(netWorth);
+        if (data[i].finalWorth < 1000) {
+            break;
+        }
     }
 
     for (let i = 0; i < billionaireWorths.length; i++) {
@@ -47,15 +54,16 @@ function compareWealths(data) {
             break;
         }
     }
-    
+
     if (billionaireName == undefined) { billionaireInfo.billionaireName = ""; }
     else { billionaireInfo.billionaireName = billionaireName; }
 
-    if (billionaireWorth == undefined) {}
+    if (billionaireWorth == undefined) { }
     else { billionaireInfo.billionaireWorth = toUsd(billionaireWorth); }
 }
 
 function showBillionaireInfo() {
+    
     if (billionaireInfo.billionaireName !== "") {
         if (billionaireInfo.billionaireName.includes("family")) {
             var informationOutput = `You would still have less than ${billionaireInfo.billionaireName}
@@ -66,19 +74,23 @@ function showBillionaireInfo() {
                                     who has a net worth of ${billionaireInfo.billionaireWorth}.`
         }
     }
-    else {
-        var informationOutput = `You would still have less than every living billionaire.`
-        }
+    else { var informationOutput = `You would still have less than every living billionaire.` }
+    
+    if (totalAmount < 1000000000) { var informationOutput = `You would still have less than 
+                                                            every living billionaire.` }
+    
     document.getElementById("billionaire-information").innerHTML = informationOutput;
 }
 
 function runBillionaireFunctions() {
+    
     getBillionaires()
         .then(compareWealths)
         .then(showBillionaireInfo);
 }
 
 function toUsd(number) {
+    
     return number.toLocaleString('en-US',
         {
             style: 'currency',
