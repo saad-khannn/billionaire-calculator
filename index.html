@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Billionaire Calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-1">
         <div id="title">Billionaire Calculator</div>
-
         <form id="input-form">
             <div class="input-box">
                 <span class="details">Years</span>
@@ -26,19 +26,18 @@
                 <input type="number" id="rate" placeholder="Enter hourly rate" required>
             </div>
         </form>
-        <div id="btn">
-            <input type="submit" value="Calculate" onclick="getInputs()">
+        <div id="button">
+            <input type="submit" id="btn" value="Calculate" onclick="getInputs()">
         </div>
     </div>
-
-    <div class="container">
+    <div class="container-2">
         <div class="output-text">
             <div id="user-wealth"></div>
-            <div id="billionaire-information"></div>
+            <div id="user-rank"></div>
         </div>
-    </div> 
-
-    <script src="main.js"></script>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/transitions.js"></script>
 </body>
 
 </html>

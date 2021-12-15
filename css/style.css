@@ -16,7 +16,7 @@ p{
     font-size: 15px;
 }
 
-.container{ 
+.container-1{ 
     max-width: 500px;
     width: 100%;
     background: #fff;
@@ -26,7 +26,7 @@ p{
     margin-top: 30px;
 }
 
-.container #title{ /* "Billionaire Calculator" title */
+.container-1 #title{ /* "Billionaire Calculator" title */
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 25px;
@@ -63,15 +63,19 @@ p{
     transition: all 0.2s ease;
 }
 
-.input-box input:focus{ /* add border to input box when clicked */
-    border: 3px #6f9bff solid;
+.input-box input:hover{
+    border: 1px #6e6e6e solid;
 }
 
-#btn{ /* "Calculate" button */
+.input-box input:focus{ /* add border to input box when clicked */
+    border: 1px #6f9bff solid;
+}
+
+#button{ /* "Calculate" button */
     height: 50px;
 }
 
-#btn input{ 
+#button input{ 
     margin: auto;
     margin-top: 30px;
     display: block;
@@ -86,7 +90,7 @@ p{
     transition: all 0.3s ease;
 }
 
-#btn input:hover{ /* change color of button when hovered*/
+#button input:hover{ /* change color of button when hovered*/
     background-color: #4f4f4f;
     cursor: pointer;
 }
@@ -103,14 +107,29 @@ input[type=number] {
 
 /**************************************************/
 
-.output-text{
+.container-2{ 
+    max-width: 500px;
     width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 30px;
+    display: none;
+}
+
+.container-2 .output-text{
     text-align: left;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
 }
 
-.output-text #user-wealth{
-    margin-bottom: 10px;
+.container-2 #user-wealth{
+    padding-bottom: 10px;
+    display: none;
+}
+
+.container-2 #user-rank {
+    display: none;
 }
