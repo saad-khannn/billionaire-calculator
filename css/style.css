@@ -1,32 +1,40 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: Lato;
 }
 
-body{
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
     height: 100vh;
+    width: 100%;
     padding: 10px;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    background: linear-gradient(135deg, rgba(255,154,154,1) 0%, rgba(33,153,255,1) 100%);}
+    background: linear-gradient(135deg, #ff9a9a 0%, #2199ff 100%);
+    background-attachment: fixed;
+}
 
-p{
+p {
     font-size: 15px;
 }
 
-.container-1{ 
-    max-width: 480px;
+.container-1 { 
+    max-width: 500px;
     width: 100%;
     background: #fff;
     padding: 25px;
     border-radius: 10px;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 1em;
 }
 
-.container-1 #title{ /* "Billionaire Calculator" title */
+.container-1 #title { /* "Billionaire Calculator" title */
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 25px;
@@ -36,7 +44,7 @@ p{
 }
 
 
-.input-box .details{ /* "Years" and "Rate" */
+.input-box .details { /* "Years" and "Rate" */
     display: block;
     font-size: 20px;
     font-weight: bold;
@@ -45,14 +53,14 @@ p{
     letter-spacing: 2px;
 }
 
-.input-box{ /* input boxes below "Years" and "Rate" */
-    width: calc(100% / 2 - 10px);
+.input-box { /* input boxes below "Years" and "Rate" */
+    width: 70%;
     text-align: center;
     margin: auto;
     margin-bottom: 15px;
 }
 
-.input-box input{ 
+.input-box input { 
     height: 30px;
     width: 90%;
     outline: none;
@@ -63,11 +71,11 @@ p{
     transition: all 0.2s ease;
 }
 
-.input-box input:hover{
+.input-box input:hover {
     border: 1px #6e6e6e solid;
 }
 
-.input-box input:focus{ /* add border to input box when clicked */
+.input-box input:focus { /* add border to input box when clicked */
     border: 1px #6f9bff solid;
 }
 
@@ -75,12 +83,12 @@ p{
     height: 50px;
 }
 
-#button input{ 
+#button input { 
     margin: auto;
     margin-top: 30px;
     display: block;
     height: 100%;
-    width: 30%;
+    width: 40%;
     outline: none;
     font-size: 20px;
     font-weight: bolder;
@@ -90,7 +98,7 @@ p{
     transition: all 0.3s ease;
 }
 
-#button input:hover{ /* change color of button when hovered*/
+#button input:hover { /* change color of button when hovered*/
     background-color: #4f4f4f;
     cursor: pointer;
 }
@@ -105,27 +113,25 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-/**************************************************/
-
-.container-2{ 
-    max-width: 480px;
+.container-2 { 
+    max-width: 500px;
     width: 100%;
     background: #fff;
     padding: 25px;
     border-radius: 10px;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 1em;
     display: none;
 }
 
-.container-2 .output-text{
+.container-2 .output-text {
     text-align: left;
     font-size: 18px;
     font-weight: bold;
     text-align: center;
 }
 
-.container-2 #user-wealth{
+.container-2 #user-wealth {
     padding-bottom: 10px;
     display: none;
 }
