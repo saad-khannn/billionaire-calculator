@@ -3,9 +3,9 @@ function getInputs() {
     document.getElementById("user-rank").innerHTML = ""; //clear #user-rank text when "calculate" button is clicked
 
     yearsInput = document.getElementById("years").value;
-    rateInput = document.getElementById("rate").value;
-    rateDollars = toUsd(Number(rateInput)); //convert rate input to dollars format
-    totalAmount = rateInput * 40 * 52.1429 * yearsInput; //calculate user's total wealth based on years and rate
+    wageInput = document.getElementById("wage").value;
+    wageDollars = toUsd(Number(wageInput)); //convert wage input to dollars format
+    totalAmount = wageInput * 40 * 52.1429 * yearsInput; //calculate user's total wealth based on years and wage
     dollarAmount = toUsd(totalAmount); //convert user's total wealth to dollars format 
 
     displayWealth();
@@ -13,7 +13,7 @@ function getInputs() {
 
 function displayWealth() {
     let wealthOutput = `After working for ${formatNumber(yearsInput)} years 
-                        at ${rateDollars} an hour, with the standard 40-hour work week,
+                        at ${wageDollars} an hour, with the standard 40-hour work week,
                         you would accumulate a wealth of ${dollarAmount}.`;
     document.getElementById("user-wealth").innerHTML = wealthOutput; //display user's wealth in .container-2 #user-wealth
 

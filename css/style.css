@@ -9,15 +9,15 @@ body{
     padding: 10px;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, rgba(191,154,255,1) 0%, rgba(255,121,121,1) 100%);
-}
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255,154,154,1) 0%, rgba(33,153,255,1) 100%);}
 
 p{
     font-size: 15px;
 }
 
 .container-1{ 
-    max-width: 500px;
+    max-width: 480px;
     width: 100%;
     background: #fff;
     padding: 25px;
@@ -108,7 +108,7 @@ input[type=number] {
 /**************************************************/
 
 .container-2{ 
-    max-width: 500px;
+    max-width: 480px;
     width: 100%;
     background: #fff;
     padding: 25px;
