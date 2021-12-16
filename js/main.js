@@ -1,3 +1,12 @@
+window.onload = async function () {
+    const response = await fetch('https://forbes400.herokuapp.com/api/forbes400/getAllBillionaires'); //fetch api which lists all active billionaires
+    data = await response.json(); //global variable for data fetched from api
+}
+
+async function getData() {
+    return data; //return data fetched from api
+}
+
 function getInputs() {
     document.getElementById("user-wealth").innerHTML = ""; //clear #user-wealth text when "calculate" button is clicked
     document.getElementById("user-rank").innerHTML = ""; //clear #user-rank text when "calculate" button is clicked
@@ -18,12 +27,6 @@ function displayWealth() {
     document.getElementById("user-wealth").innerHTML = wealthOutput; //display user's wealth in .container-2 #user-wealth
 
     runBillionaireFunctions();
-}
-
-async function getBillionaires() {
-    const response = await fetch('https://forbes400.herokuapp.com/api/forbes400/getAllBillionaires'); //fetch api which lists all active billionaires
-    const data = await response.json(); 
-    return data; //returns data fetched from api call 
 }
 
 var billionaireInfo = {}; //globally scoped variable used to store billionaire information
@@ -57,7 +60,7 @@ function compareWealths(data) {
 
     //add values found during comparison to globally scoped variable
     if (billionaireName == undefined) { billionaireInfo.billionaireName = ""; }
-    else { billionaireInfo.billionaireName = billionaireName; } 
+    else { billionaireInfo.billionaireName = billionaireName; }
 
     if (billionaireWorth == undefined) { }
     else { billionaireInfo.billionaireWorth = toUsd(billionaireWorth); }
@@ -98,13 +101,14 @@ function showBillionaireInfo() {
 
     if (totalAmount < 1000000000) { //added this since line 93 alone was still showing comparisons to billionaires 
                                     //in rankOutput even if user's wealth was below $1 billion
-        var rankOutput = `You would still have less than every living billionaire.` }
+        var rankOutput = `You would still have less than every living billionaire.`
+    }
 
     document.getElementById("user-rank").innerHTML = rankOutput;
 }
 
 function runBillionaireFunctions() {
-    getBillionaires()
+    getData()
         .then(compareWealths)
         .then(showBillionaireInfo);
 }
