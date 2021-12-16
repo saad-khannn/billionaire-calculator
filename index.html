@@ -19,11 +19,11 @@
         <form id="input-form">
             <div class="input-box">
                 <span class="details">Years</span>
-                <input type="number" id="years" placeholder="Enter years worked" required>
+                <input type="number" id="years" placeholder="Enter years worked" required onchange="checkValue()">
             </div>
             <div class="input-box">
                 <span class="details">Wage</span>
-                <input type="number" id="wage" placeholder="Enter hourly wage" required>
+                <input type="number" id="wage" placeholder="Enter hourly wage" required onchange="checkValue()">
             </div>
         </form>
         <div id="button">
@@ -37,7 +37,7 @@
         </div>
     </div>
     <script src="js/main.js"></script>
-    <script src="js/transitions.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 
 </html>

@@ -7,6 +7,26 @@ async function getData() {
     return data; //return data fetched from api
 }
 
+function checkValue(){
+    const maxValue = 999999999999999;
+    yearsInput = document.getElementById("years").value; //get "years" input
+    wageInput = document.getElementById("wage").value; //get "wage" input
+    
+    if(yearsInput > maxValue){ //set limit on "years" input
+        document.getElementById("years").value = maxValue;
+    }
+    if(wageInput > maxValue){ //set limit on "wage" input
+        document.getElementById("wage").value = maxValue;
+    }
+
+    if(yearsInput < 0){ //"years" input can't be negative
+        document.getElementById("years").value = 0;
+    }
+    if(wageInput < 0){ //"wage" input can't be negative
+        document.getElementById("wage").value = 0;
+    }
+}
+
 function getInputs() {
     document.getElementById("user-wealth").innerHTML = ""; //clear #user-wealth text when "calculate" button is clicked
     document.getElementById("user-rank").innerHTML = ""; //clear #user-rank text when "calculate" button is clicked
@@ -99,7 +119,7 @@ function showBillionaireInfo() {
         var rankOutput = `You would be the richest person in the world.`
     }
 
-    if (totalAmount < 1000000000) { //added this since line 93 alone was still showing comparisons to billionaires 
+    if (totalAmount < 1000000000) { //added this since line 96 alone was still showing comparisons to billionaires 
                                     //in rankOutput even if user's wealth was below $1 billion
         var rankOutput = `You would still have less than every living billionaire.`
     }
