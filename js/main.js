@@ -109,8 +109,8 @@ function showBillionaireInfo() {
 
 function runBillionaireFunctions() {
     getData()
-        .then(compareWealths)
-        .then(showBillionaireInfo);
+    .then(compareWealths)
+    .then(showBillionaireInfo);
 }
 
 function toUsd(number) { //converts from number to dollars format 
