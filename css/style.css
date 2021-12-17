@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -109,6 +109,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 input[type=number] {
   -moz-appearance: textfield;
 }
@@ -121,7 +122,7 @@ input[type=number] {
     border-radius: 10px;
     margin: auto;
     margin-top: 1em;
-    display: none;
+    display: none; /* "display: none" for fade */
 }
 
 .container-2 .output-text {
@@ -131,11 +132,11 @@ input[type=number] {
     text-align: center;
 }
 
-.container-2 #user-wealth {
+.container-2 #user-wealth { 
     padding-bottom: 10px;
-    display: none;
+    display: none; /* "display: none" for fade */
 }
 
-.container-2 #user-rank {
-    display: none;
+.container-2 #user-rank { 
+    display: none; /* "display: none" for fade */
 }
