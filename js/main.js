@@ -7,22 +7,22 @@ async function getData() {
     return data; //return data fetched from api
 }
 
-function checkValue(){
+function checkValue() {
     const maxValue = 999999999999999;
     yearsInput = document.getElementById("years").value; //get "years" input
     wageInput = document.getElementById("wage").value; //get "wage" input
-    
-    if(yearsInput > maxValue){ //set limit on "years" input
+
+    if (yearsInput > maxValue) { //set limit on "years" input
         document.getElementById("years").value = maxValue;
     }
-    if(wageInput > maxValue){ //set limit on "wage" input
+    if (wageInput > maxValue) { //set limit on "wage" input
         document.getElementById("wage").value = maxValue;
     }
 
-    if(yearsInput < 0){ //"years" input can't be negative
+    if (yearsInput < 0) { //"years" input can't be negative
         document.getElementById("years").value = 0;
     }
-    if(wageInput < 0){ //"wage" input can't be negative
+    if (wageInput < 0) { //"wage" input can't be negative
         document.getElementById("wage").value = 0;
     }
 }
@@ -55,15 +55,18 @@ function compareWealths(data) {
     var billionaireNames = []; //empty array for billionaires' names
     var billionaireWorths = []; //billionaires' net worths 
     var billionaireRanks = []; //billionaires' ranks
+    var billionaireGenders = []; //billionaires' genders
     var billionaireName; //variable for billionaire name (found during comparison)
     var billionaireWorth; //billionaire net worth 
     var billionaireRank; //billionaire rank 
+    var billionaireGender; //billionaire gender
 
     for (let i = 0; i < data.length; i++) { //iterate through api response
         netWorth = (data[i].finalWorth) * 1000000; //billionaires' worths in api is divided by 1000000, so reverse that
         billionaireNames.push(data[i].person.name); //add each billionaire's name 
         billionaireWorths.push(netWorth); //net worth 
-        billionaireRanks.push(data[i].rank); //and rank to the arrays
+        billionaireRanks.push(data[i].rank); //rank
+        billionaireGenders.push(data[i].gender); //and gender to the arrays
         if (data[i].finalWorth < 1000) { //some people near the end of api response have less than $1 billion
             break; //so stop adding billionaires to array if their net worth is below $1 billion 
         }
@@ -74,6 +77,7 @@ function compareWealths(data) {
             billionaireName = billionaireNames[i - 1]; //get the name of the previous (richer) billionaire
             billionaireWorth = billionaireWorths[i - 1]; //get the net worth of the previous billionaire
             billionaireRank = billionaireRanks[i - 1]; //get the rank of the previous billionaire
+            billionaireGender = billionaireGenders[i - 1]; //get the gender of the previous billionaire
             break;
         }
     }
@@ -88,10 +92,24 @@ function compareWealths(data) {
     if (billionaireRank == undefined) { }
     else { billionaireInfo.billionaireRank = billionaireRank; }
 
+    if (billionaireGender == undefined) { }
+    else { billionaireInfo.billionaireGender = billionaireGender; }
+
     if (totalAmount > billionaireWorths[0]) { billionaireInfo.billionaireName = "1"; } //if user's wealth is greater than richest billionaire
 }
 
 function showBillionaireInfo() {
+    var gender = undefined;
+    if (billionaireInfo.billionaireGender == "M") { gender = "his "; } //male
+    else if (billionaireInfo.billionaireGender == "F") { gender = "her "; } //female
+    else { gender = "their "; } //non-binary, or gender not listed as male or female
+
+    if (billionaireInfo.billionaireName.includes("family")) {
+        var familyIndex = billionaireInfo.billionaireName.indexOf("family"); //get position of "family" in name
+        billionaireInfo.billionaireName = billionaireInfo.billionaireName.substring(0, familyIndex) //add gender pronoun between "&"
+                                        + gender + billionaireInfo.billionaireName.substring(familyIndex); //and "family"
+    }
+
     if (billionaireInfo.billionaireName !== "") {
         if (billionaireInfo.billionaireRank !== 1) {
             if (billionaireInfo.billionaireName.includes("family")) { //change text if billionaireName includes "family"
@@ -119,7 +137,7 @@ function showBillionaireInfo() {
         var rankOutput = `You would be the richest person in the world.`
     }
 
-    if (totalAmount < 1000000000) { //added this since line 96 alone was still showing comparisons to billionaires 
+    if (totalAmount < 1000000000) { //added this since line 134 alone was still showing comparisons to billionaires 
                                     //in rankOutput even if user's wealth was below $1 billion
         var rankOutput = `You would still have less than every living billionaire.`
     }
@@ -129,8 +147,8 @@ function showBillionaireInfo() {
 
 function runBillionaireFunctions() {
     getData()
-    .then(compareWealths)
-    .then(showBillionaireInfo);
+        .then(compareWealths)
+        .then(showBillionaireInfo);
 }
 
 function toUsd(number) { //converts from number to dollars format 
