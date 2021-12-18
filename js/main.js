@@ -8,7 +8,7 @@ async function getData() {
 }
 
 function checkValue() {
-    const maxValue = 999999999999999;
+    const maxValue = 999999999;
     yearsInput = document.getElementById("years").value; //get "years" input
     wageInput = document.getElementById("wage").value; //get "wage" input
 
@@ -34,7 +34,7 @@ function getInputs() {
     yearsInput = document.getElementById("years").value;
     wageInput = document.getElementById("wage").value;
     wageDollars = toUsd(Number(wageInput)); //convert wage input to dollars format
-    totalAmount = wageInput * 40 * 52.1429 * yearsInput; //calculate user's total wealth based on years and wage
+    totalAmount = wageInput * 40 * 52.142857 * yearsInput; //calculate user's total wealth based on years and wage
     dollarAmount = toUsd(totalAmount); //convert user's total wealth to dollars format 
 
     displayWealth();
