@@ -43,7 +43,7 @@ function getInputs() {
 function displayWealth() {
     let wealthOutput = `After working for ${formatNumber(yearsInput)} years 
                         at ${wageDollars} an hour, with the standard 40-hour work week,
-                        you would accumulate a wealth of ${dollarAmount}.`;
+                        you would have ${dollarAmount}.`;
     document.getElementById("user-wealth").innerHTML = wealthOutput; //display user's wealth in .container-2 #user-wealth
 
     runBillionaireFunctions();
