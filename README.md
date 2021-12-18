@@ -1,6 +1,12 @@
 # Billionaire Calculator
 
+### <p align="center">The website is available here: https://saad-khannn.github.io/billionaire-calculator/</p>
+
+<br />
+
 <p align="center"> <img width="600" height="600" src="billionaire-calculator.PNG"></p>
+
+<br />
 
 This website allows the user to enter a number of years and an hourly wage. Those inputs will then be used to calculate their wealth which will be determined using the following equation: wealth = *wage* × 40 hours × 52 weeks × *years*. **NOTE:** This equation doesn't consider spending, taxes, investments, etc. 
 
