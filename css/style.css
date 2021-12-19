@@ -140,3 +140,27 @@ input[type=number] {
 .container-2 #user-rank { 
     display: none; /* "display: none" for fade */
 }
+
+@media only screen and (min-width: 1400px) and (max-width: 1680px) {
+    body { 
+        transform: scale(1.1);
+        transform-origin: center top;
+        overflow: hidden;
+    }
+}
+
+@media only screen and (min-width: 1681px) and (max-width: 1800px) {
+    body { 
+        transform: scale(1.25);
+        transform-origin: center top;
+        overflow: hidden;
+    }
+}
+
+@media only screen and (min-width: 1801px) {
+    body { 
+        transform: scale(1.5);
+        transform-origin: center top;
+        overflow: hidden;
+    }
+}
